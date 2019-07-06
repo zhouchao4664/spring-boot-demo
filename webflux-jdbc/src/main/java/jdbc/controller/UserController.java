@@ -1,16 +1,16 @@
 package jdbc.controller;
 
-import com.zhouchao.springbootdemo.jdbc.domain.User;
-import com.zhouchao.springbootdemo.jdbc.repository.UserRepository;
-import org.springframework.stereotype.Controller;
+import jdbc.domain.User;
+import jdbc.repository.UserRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 2018/8/26
  * zhouchao
  */
-@Controller
+@RestController
 public class UserController {
 
     public UserController(UserRepository userRepository) {
