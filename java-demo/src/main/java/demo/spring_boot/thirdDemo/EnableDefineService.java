@@ -12,6 +12,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import(CacheImportSelector.class)
+@Import({CacheImportSelector.class, LoggerDefinitionRegistrar.class})
 public @interface EnableDefineService {
 }
