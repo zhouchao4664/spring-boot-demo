@@ -7,7 +7,7 @@ package demo.thread;
 public class ThreadDemo {
     public static void main(String[] args) {
         Thread thread = new Thread(() -> {
-            System.out.printf("县城[Id : %s] : Hello World!\n",Thread.currentThread().getId());
+            System.out.printf("线程[Id : %s] : Hello World!\n",Thread.currentThread().getId());
         });
 
         thread.start();
