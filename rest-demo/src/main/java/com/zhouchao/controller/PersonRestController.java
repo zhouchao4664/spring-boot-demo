@@ -2,10 +2,10 @@ package com.zhouchao.controller;
 
 
 import com.zhouchao.domain.Person;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 
 /**
  * {@link RestController}
@@ -23,4 +23,23 @@ public class PersonRestController {
         return person;
     }
 
+    @PostMapping(value = "/person/json/to/properties",
+            consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
+            produces = "application/properties+person"
+    )
+    public Person personPropertiesToJson(@RequestBody Person person){
+        //@RequestBody 的内容是JSON
+        //响应的内容是 Properties
+        return person;
+    }
+
+    @PostMapping(value = "/person/properties/to/json",
+            consumes = "application/properties+person",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
+    )
+    public Person personJsonToProperties(@RequestBody Person person){
+        //@RequestBody 的内容是 Properties
+        //响应的内容是 JSON
+        return person;
+    }
 }
