@@ -41,7 +41,8 @@
 		<module>mq</module>
 		<module>zookeeper</module>
 		<module>rest-demo</module>
-	</modules>
+        <module>scheduler</module>
+    </modules>
 	<build>
 		<plugins>
 			<plugin>
