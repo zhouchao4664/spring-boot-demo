@@ -21,6 +21,6 @@ public class MyJob1 implements Job {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         JobDataMap dataMap = jobExecutionContext.getJobDetail().getJobDataMap();
-        System.out.println(sdf.format(date) + "任务1执行了，" + dataMap.getString("zhouchao"));
+        System.out.println(sdf.format(date) + "-" + "任务1执行了，" + dataMap.getString("zhouchao") + "-" + Thread.currentThread().getName());
     }
 }
