@@ -52,8 +52,10 @@ public class InitStartScheduler implements CommandLineRunner {
         }
     }
 
-    public static Job getClass(String className) {
-
-        return null;
+    public static Job getClass(String className) throws Exception {
+        Class clazz = Class.forName(className);
+        Object object = clazz.newInstance();
+        Job job = (Job) object;
+        return job;
     }
 }
