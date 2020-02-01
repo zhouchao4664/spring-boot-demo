@@ -74,11 +74,13 @@ public class SchedulerUtils {
      * @param jobGroupName 组别
      * @throws Exception
      */
-    public static void jobresume(String jobName, String jobGroupName) throws Exception {
+    public static Boolean jobresume(String jobName, String jobGroupName) throws Exception {
         // 通过SchedulerFactory获取一个调度器实例
         SchedulerFactory sf = new StdSchedulerFactory();
         Scheduler scheduler = sf.getScheduler();
         scheduler.resumeJob(JobKey.jobKey(jobName, jobGroupName));
+
+        return true;
     }
 
     /**
