@@ -3,7 +3,6 @@ package scheduler.config;
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import quartz.job.MyJob1;
 
 /**
  * @Author zhouchao

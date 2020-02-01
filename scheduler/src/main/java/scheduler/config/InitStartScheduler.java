@@ -48,7 +48,7 @@ public class InitStartScheduler implements CommandLineRunner {
             String jobGroupName = sysJob.getJobGroup();
 
             //构建job信息
-            JobDetail jobDetail = JobBuilder.newJob(getClass(sysJob.getJobClassPath()).getClass()).build();
+            JobDetail jobDetail = JobBuilder.newJob(SchedulerUtils.getClass(sysJob.getJobClassPath()).getClass()).build();
 
             if (StringUtils.isNotEmpty(sysJob.getJobDataMap())) {
                 JSONObject jb = JSONObject.parseObject(sysJob.getJobDataMap());
@@ -74,12 +74,5 @@ public class InitStartScheduler implements CommandLineRunner {
                 }
             }
         }
-    }
-
-    public static Job getClass(String className) throws Exception {
-        Class<?> clazz = Class.forName(className);
-        Object object = clazz.newInstance();
-        Job job = (Job) object;
-        return job;
     }
 }
