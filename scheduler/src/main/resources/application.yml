@@ -10,5 +10,12 @@ logging:
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.raydata.model
+  type-aliases-package: scheduler.domain
   configLocation: classpath:mybaties-config.xml
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-test
+    username: root
+    password: zhc4664

@@ -1,18 +1,16 @@
 package scheduler.config;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
-import org.quartz.Job;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
+import org.apache.commons.lang3.StringUtils;
+import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import scheduler.dao.SysJobMapper;
 import scheduler.domain.SysJob;
-import scheduler.service.SysJobService;
 import scheduler.utils.SchedulerUtils;
 
 import java.util.HashMap;
@@ -30,6 +28,8 @@ public class InitStartScheduler implements CommandLineRunner {
     @Autowired
     private SysJobMapper sysJobMapper;
 
+    @Autowired
+    private MyJobFactory myJobFactory;
 
     @Override
     public void run(String... args) throws Exception {
@@ -41,7 +41,7 @@ public class InitStartScheduler implements CommandLineRunner {
 
         Scheduler scheduler = SchedulerUtils.getScheduler();
 
-//        scheduler.setJobFactory();
+        scheduler.setJobFactory(myJobFactory);
 
         for (SysJob sysJob : jobList) {
             String jobClassName = sysJob.getJobName();
@@ -49,11 +49,35 @@ public class InitStartScheduler implements CommandLineRunner {
 
             //构建job信息
             JobDetail jobDetail = JobBuilder.newJob(getClass(sysJob.getJobClassPath()).getClass()).build();
+
+            if (StringUtils.isNotEmpty(sysJob.getJobDataMap())) {
+                JSONObject jb = JSONObject.parseObject(sysJob.getJobDataMap());
+                Map<String, Object> dataMap = (Map<String, Object>) jb.get("zhouchao");
+                for (Map.Entry<String, Object> m : dataMap.entrySet()) {
+                    jobDetail.getJobDataMap().put(m.getKey(), m.getValue());
+                }
+            }
+
+            //表达式调度构建器(即任务执行的时间)
+            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(sysJob.getJobCron());
+            //按新的cronExpression表达式构建一个新的trigger
+            CronTrigger trigger = TriggerBuilder.newTrigger().withIdentity(jobClassName, jobGroupName)
+                    .withSchedule(scheduleBuilder).startNow().build();
+
+            // 任务不存在的时候才添加
+            if (!scheduler.checkExists(jobDetail.getKey())) {
+                try {
+                    scheduler.scheduleJob(jobDetail, trigger);
+                } catch (SchedulerException e) {
+                    log.info("创建定时任务失败"+e);
+                    throw new Exception("创建定时任务失败");
+                }
+            }
         }
     }
 
     public static Job getClass(String className) throws Exception {
-        Class clazz = Class.forName(className);
+        Class<?> clazz = Class.forName(className);
         Object object = clazz.newInstance();
         Job job = (Job) object;
         return job;
