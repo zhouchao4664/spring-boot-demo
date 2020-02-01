@@ -1,4 +1,4 @@
-CREATE database test;
+CREATE database spring-test;
 
 CREATE TABLE `sys_job` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -11,3 +11,5 @@ CREATE TABLE `sys_job` (
   `job_describe` varchar(1024) DEFAULT NULL COMMENT '任务功能描述',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `spring-test`.`sys_job` (`job_name`, `job_group`, `job_cron`, `job_class_path`, `job_data_map`, `job_status`, `job_describe`) VALUES ('task1', 'test', '0/5 * * * * ?', 'scheduler.config.MyJob1', '', '1', '测试专用');
