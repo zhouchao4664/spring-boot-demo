@@ -39,6 +39,13 @@ public class QuartzController {
 //        return result;
 //    }
 
+    /**
+     * 启动定时任务
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @GetMapping("start/{id}")
     public String addJob(@PathVariable("id") Integer id) throws Exception {
         log.info("开始启动一个定时任务");
@@ -47,6 +54,13 @@ public class QuartzController {
         return "success";
     }
 
+    /**
+     * 变更定时任务状态
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @GetMapping("change/status/{id}")
     public String changeStatus(@PathVariable("id") Integer id) throws Exception {
         log.info("开始变更定时任务状态");
@@ -57,8 +71,6 @@ public class QuartzController {
 
         return "success";
     }
-
-
 
 
 }
