@@ -79,7 +79,6 @@ public class SchedulerUtils {
         SchedulerFactory sf = new StdSchedulerFactory();
         Scheduler scheduler = sf.getScheduler();
         scheduler.resumeJob(JobKey.jobKey(jobName, jobGroupName));
-
         return true;
     }
 

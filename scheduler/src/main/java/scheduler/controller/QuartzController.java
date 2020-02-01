@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import scheduler.domain.SysJob;
 import scheduler.service.SysJobService;
+import scheduler.utils.Constant;
 
 /**
  * @Author zhouchao
@@ -17,25 +19,32 @@ import scheduler.service.SysJobService;
 @Slf4j
 @RestController
 public class QuartzController {
-
-    @Autowired
-    private JobDetail jobDetail;
-
-    @Autowired
-    private Trigger trigger;
-
     @Autowired
     private SysJobService sysJobService;
 
-    @GetMapping("start")
-    public String start() throws SchedulerException {
-        SchedulerFactory schedulerFactory = new StdSchedulerFactory();
-        Scheduler scheduler = schedulerFactory.getScheduler();
-        scheduler.scheduleJob(jobDetail, trigger);
-        scheduler.start();
+//    @Autowired
+//    private JobDetail jobDetail;
+//
+//    @Autowired
+//    private Trigger trigger;
+//
+//    @GetMapping("start")
+//    public String start() throws SchedulerException {
+//        SchedulerFactory schedulerFactory = new StdSchedulerFactory();
+//        Scheduler scheduler = schedulerFactory.getScheduler();
+//        scheduler.scheduleJob(jobDetail, trigger);
+//        scheduler.start();
+//
+//        String result = "success";
+//        return result;
+//    }
 
-        String result = "success";
-        return result;
+    @GetMapping("start/{id}")
+    public String addJob(@PathVariable("id") Integer id) throws Exception {
+        log.info("开始启动一个定时任务");
+        if (id == null) throw new Exception("id不能为空");
+        sysJobService.startJob(id);
+        return "success";
     }
 
     @GetMapping("change/status/{id}")
@@ -48,6 +57,8 @@ public class QuartzController {
 
         return "success";
     }
+
+
 
 
 }

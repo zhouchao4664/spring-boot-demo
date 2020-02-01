@@ -40,9 +40,10 @@ public class InitStartScheduler implements CommandLineRunner {
         if (CollectionUtils.isEmpty(jobList)) log.info("系统启动，没有需要执行的任务");
 
         Scheduler scheduler = SchedulerUtils.getScheduler();
-
+        // 如果不设置JobFactory，Service注入到Job会报空指针
         scheduler.setJobFactory(myJobFactory);
-
+        // 启动调度器
+        scheduler.start();
         for (SysJob sysJob : jobList) {
             String jobClassName = sysJob.getJobName();
             String jobGroupName = sysJob.getJobGroup();
@@ -52,7 +53,7 @@ public class InitStartScheduler implements CommandLineRunner {
 
             if (StringUtils.isNotEmpty(sysJob.getJobDataMap())) {
                 JSONObject jb = JSONObject.parseObject(sysJob.getJobDataMap());
-                Map<String, Object> dataMap = (Map<String, Object>) jb.get("zhouchao");
+                Map<String, Object> dataMap = (Map<String, Object>) jb.get("data");
                 for (Map.Entry<String, Object> m : dataMap.entrySet()) {
                     jobDetail.getJobDataMap().put(m.getKey(), m.getValue());
                 }

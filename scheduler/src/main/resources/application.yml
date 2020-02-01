@@ -16,6 +16,6 @@ mybatis-plus:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/spring-test
+    url: jdbc:mysql://localhost:3306/spring-test?characterEncoding=UTF-8
     username: root
     password: zhc4664

@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @Date 2020/1/22 10:38
  * @Description
  **/
-@Configuration
+//@Configuration
 public class QuartzConfig {
 
     @Bean
@@ -21,7 +21,6 @@ public class QuartzConfig {
                 .build();
     }
 
-
     @Bean
     public Trigger printTimeJobTrigger(){
         CronScheduleBuilder cronScheduleBuilder = CronScheduleBuilder.cronSchedule("0/5 * * * * ?");
@@ -29,7 +28,6 @@ public class QuartzConfig {
         return TriggerBuilder.newTrigger()
                 .withIdentity("QuartzJob")
                 .forJob(printTimeJobDetail())
-                .withIdentity("quartzTaskService")
                 .withSchedule(cronScheduleBuilder)
                 .build();
     }
