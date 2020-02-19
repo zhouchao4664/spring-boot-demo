@@ -46,7 +46,8 @@
 		<module>zookeeper</module>
 		<module>rest-demo</module>
         <module>scheduler</module>
-    </modules>
+        <module>spring-cloud-config-client</module>
+	</modules>
 	<build>
 		<plugins>
 			<plugin>
