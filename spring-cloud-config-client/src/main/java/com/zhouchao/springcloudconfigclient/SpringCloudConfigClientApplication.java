@@ -16,13 +16,13 @@ public class SpringCloudConfigClientApplication {
         context.addApplicationListener(new ApplicationListener<MyApplicationEvent>() {
             @Override
             public void onApplicationEvent(MyApplicationEvent event) {
-                System.out.println(event.getSource()+"@"+event.getApplicationContext());
+                System.out.println(event.getSource());
             }
         });
         //发布事件
         context.refresh();
+        context.publishEvent(new MyApplicationEvent(context,"Hello World"));
         //监听器得到事件
-        context.publishEvent(new MyApplicationEvent(context, "Hello World"));
 
     }
 
