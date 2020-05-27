@@ -47,7 +47,8 @@
 		<module>rest-demo</module>
         <module>scheduler</module>
         <module>spring-cloud-config-client</module>
-	</modules>
+        <module>mybatis-demo</module>
+    </modules>
 	<build>
 		<plugins>
 			<plugin>
