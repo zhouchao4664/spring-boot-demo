@@ -1,10 +1,10 @@
-package demo.thread.volatileDemo;
+package demo.thread.volatileDemo.demo1;
 
 /**
  * 2019/5/19
  * zhouchao
  */
-public class volatileThread {
+public class VolatileThread {
 
     public static volatile int i = 0;
 
