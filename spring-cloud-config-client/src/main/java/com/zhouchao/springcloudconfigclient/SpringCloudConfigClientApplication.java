@@ -11,7 +11,7 @@ public class SpringCloudConfigClientApplication {
     public static void main(String[] args) {
         //Annotation 驱动的 Spring 上下文
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-
+        
         //注册监听器
         context.addApplicationListener(new ApplicationListener<MyApplicationEvent>() {
             @Override
