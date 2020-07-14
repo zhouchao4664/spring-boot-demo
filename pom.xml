@@ -46,8 +46,9 @@
 		<module>zookeeper</module>
 		<module>rest-demo</module>
         <module>scheduler</module>
-        <module>spring-cloud-config-client</module>
-	</modules>
+        <module>mybatis-demo</module>
+        <module>auto-idempotent</module>
+    </modules>
 	<build>
 		<plugins>
 			<plugin>
