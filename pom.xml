@@ -48,6 +48,7 @@
         <module>scheduler</module>
         <module>mybatis-demo</module>
         <module>auto-idempotent</module>
+        <module>security</module>
     </modules>
 	<build>
 		<plugins>
