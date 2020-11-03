@@ -34,7 +34,7 @@ public class UserService implements UserDetailsService {
                 true,
                 true,
                 true,
-                false,
+                true,
                 authorities);
 
         return user;
