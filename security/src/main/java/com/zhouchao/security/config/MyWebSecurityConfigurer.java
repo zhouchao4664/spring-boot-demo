@@ -1,8 +1,12 @@
 package com.zhouchao.security.config;
 
+import com.zhouchao.security.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @Author zhouchao
@@ -12,12 +16,33 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        /*auth.inMemoryAuthentication()
                 .withUser("zhouchao")
                 .password("{noop}123") //{noop}表示不加密
-                .authorities("ADMIN");
+                .authorities("ADMIN");*/
+
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+    }
+
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    public static void main(String[] args) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("123"));
+        System.out.println(encoder.encode("123"));
+        System.out.println(encoder.encode("123"));
     }
 
 }
