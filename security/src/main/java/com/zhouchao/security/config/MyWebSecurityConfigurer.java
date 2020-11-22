@@ -37,7 +37,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/login.html","/error.html").permitAll()
+                .antMatchers("/login.html", "/error.html").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -49,6 +49,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login.html")
+                .and().rememberMe()
                 .and().csrf().disable()
                 .httpBasic();
     }
