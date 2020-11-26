@@ -14,3 +14,11 @@ spring:
           url: jdbc:mysql://10.10.10.111:3306/zhouchao2?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
           username: root
           password: Raykite_888!
+
+es:
+  host: 10.10.10.163
+  port: 9200
+  scheme: http
+
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml

@@ -1,0 +1,20 @@
+server:
+  port: 8180
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.10.10.111:3306/raydb_resource_v1.2?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: Raykite_888!
+  elasticsearch:
+    rest:
+      uris: ["10.10.10.115:9200","10.10.10.116:9200","10.10.10.117:9200"]
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  config-location: classpath:mybaties-config.xml
+
+index:
+  example: example_index
+  template-sign: template_sign_index

@@ -50,6 +50,7 @@
         <module>auto-idempotent</module>
         <module>security</module>
         <module>dynamic-datasource</module>
+        <module>elasticsearch</module>
     </modules>
 	<build>
 		<plugins>
