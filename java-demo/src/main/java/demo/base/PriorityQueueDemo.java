@@ -8,9 +8,10 @@ public class PriorityQueueDemo {
     public static void main(String[] args) {
         Integer[] num = {2,6,7,4,6,1,8,9};
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < num.length; i++) {
             pq.offer(num[i]);
         }
+        System.out.println(num);
     }
 
 }
