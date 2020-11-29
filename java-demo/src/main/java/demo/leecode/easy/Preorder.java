@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @Auther: zhouc
  * @Date: 2020/11/28 16:00
- * @Description: https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/
+ * @Description: https://leetcode-cn.com/problems/n-ary-tree-preorder-traversal/description/ 589. N叉树的前序遍历
  */
 public class Preorder {
 

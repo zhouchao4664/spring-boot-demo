@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @Auther: zhouc
  * @Date: 2020/11/26 00:52
- * @Description:
+ * @Description: https://leetcode-cn.com/problems/valid-anagram/description/ 242. 有效的字母异位词
  */
 public class IsAnagram {
     public boolean isAnagram(String s, String t) {
