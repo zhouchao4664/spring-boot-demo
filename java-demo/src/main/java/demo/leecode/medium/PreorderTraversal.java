@@ -5,11 +5,11 @@ import java.util.List;
 
 /**
  * @Author zhouchao
- * @Date 2020/11/27 22:16
- * @Description https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
+ * @Date 2020/11/28 15:59
+ * @Description https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
  **/
 
-public class InorderTraversal {
+public class PreorderTraversal {
     public class TreeNode {
         int val;
         TreeNode left;
@@ -29,12 +29,12 @@ public class InorderTraversal {
         }
     }
 
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
-        result.addAll(inorderTraversal(root.left));
         result.add(root.val);
-        result.addAll(inorderTraversal(root.right));
+        result.addAll(preorderTraversal(root.left));
+        result.addAll(preorderTraversal(root.right));
         return result;
     }
 }
