@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @Author zhouchao
  * @Date 2020/11/27 22:16
- * @Description https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
+ * @Description https://leetcode-cn.com/problems/binary-tree-inorder-traversal/ 94. 二叉树的中序遍历
  **/
 
 public class InorderTraversal {

@@ -9,7 +9,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 /**
  * @Auther: zhouc
  * @Date: 2020/11/28 16:25
- * @Description:
+ * @Description: https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/ 429. N 叉树的层序遍历
  */
 public class levelOrder {
     class Node {
