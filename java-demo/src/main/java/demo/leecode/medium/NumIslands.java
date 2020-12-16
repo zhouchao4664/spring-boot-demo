@@ -3,7 +3,7 @@ package demo.leecode.medium;
 /**
  * @Auther: zhouc
  * @Date: 2020/12/14 00:37
- * @Description:
+ * @Description: https://leetcode-cn.com/problems/number-of-islands/ 200. 岛屿数量
  */
 public class NumIslands {
     int num = 0;
