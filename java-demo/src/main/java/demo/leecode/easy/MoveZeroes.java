@@ -3,7 +3,7 @@ package demo.leecode.easy;
 /**
  * @Author zhouchao
  * @Date 2020/11/18 16:29
- * @Description
+ * @Description https://leetcode-cn.com/problems/move-zeroes/ 283. 移动零
  **/
 
 public class MoveZeroes {

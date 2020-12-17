@@ -3,7 +3,7 @@ package demo.leecode.easy;
 /**
  * @Author zhouchao
  * @Date 2020/12/2 21:52
- * @Description
+ * @Description https://leetcode-cn.com/problems/invert-binary-tree/ 226. 翻转二叉树
  **/
 public class InvertTree {
     public class TreeNode {
