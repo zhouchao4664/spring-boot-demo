@@ -64,6 +64,13 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         System.out.println(encoder.encode("123"));
         System.out.println(encoder.encode("123"));
         System.out.println(encoder.encode("123"));
+
+        String pwd1 = encoder.encode("123");
+        String pwd2 = encoder.encode("123");
+
+        System.out.println(encoder.matches("123", pwd1));
+        System.out.println(encoder.matches("123", pwd2));
+
     }
 
 }
