@@ -8,19 +8,21 @@ package demo.leecode.medium;
 
 public class MaxProduct {
     public int maxProduct(int[] nums) {
-        int max = nums[0], imax = 1, imin = 1;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] < 0) {
-                int tmp = imax;
-                imax = imin;
-                imin = tmp;
+        int max = 1;
+        int min = 1;
+        int result = Integer.MIN_VALUE;
+        for (int n : nums) {
+            if(n<0){
+                max += min;
+                min = max-min;
+                max = max-min;
             }
-            imax = Math.max(imax * nums[i], nums[i]);
-            imin = Math.min(imin * nums[i], nums[i]);
+            max = Math.max(max * n, n);
+            min = Math.min(min * n, n);
 
-            max = Math.max(max, imax);
+            result = Math.max(max, result);
         }
-        return max;
+        return result;
     }
 
     public static void main(String[] args) {
