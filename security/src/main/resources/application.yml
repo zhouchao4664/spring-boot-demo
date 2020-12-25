@@ -1,4 +1,16 @@
 server:
   port: 8881
 
+spring:
+  application:
+    name: security-app
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    password: root
+    username: zhouchao
 
+jwt:
+  secret: wojiushisuibianyixiefanzhengniyebuzhidao
+  header: token
+  path: /login.html
