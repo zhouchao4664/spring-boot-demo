@@ -1,14 +1,11 @@
 package com.zhouchao.security.service;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zhouchao.security.dao.SysUserMapper;
 import com.zhouchao.security.domain.SysUser;
-import com.zhouchao.security.jwt.JwtUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -48,12 +45,9 @@ public class UserService implements UserDetailsService {
 //                true,
 //                authorities);
 
-        JwtUser user = new JwtUser();
-        user.setId(sysUser.getId());
-        user.setUsername(sysUser.getName());
-        user.setPassword(sysUser.getPwd());
 
-        return user;
+
+        return null;
     }
 
     public SysUser findByUserName(String name) {

@@ -2,57 +2,47 @@ package com.zhouchao.security.config;
 
 import com.zhouchao.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 
 /**
  * @Author zhouchao
- * @Date 2020/10/22 18:29
+ * @Date 2020/12/28 16:27
  * @Description
  **/
-//@Configuration
-//@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
-public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+@Configuration
+public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserService userService;
 
-
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    @Value("${jwt.path}")
+    private String loginPath;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        /*auth.inMemoryAuthentication()
-                .withUser("zhouchao")
-                .password("{noop}123") //{noop}表示不加密
-                .authorities("ADMIN");*/
-
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
-                .antMatchers("/login.html", "/error.html").permitAll()
+                .antMatchers(loginPath).permitAll()
                 .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/login.do")
-                .defaultSuccessUrl("/home.html")
-                .failureForwardUrl("/error.html")
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login.html")
+                .and().logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
                 .and().rememberMe()
-                .and().csrf().disable()
-                .httpBasic();
+                .and().httpBasic().and().csrf().disable();
+
     }
 
     @Bean
