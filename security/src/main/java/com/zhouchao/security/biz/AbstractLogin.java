@@ -2,10 +2,14 @@ package com.zhouchao.security.biz;
 
 import com.zhouchao.security.core.ResultVo;
 import com.zhouchao.security.core.exception.ValidException;
+import com.zhouchao.security.domain.SysUser;
 import com.zhouchao.security.dto.AuthLogin;
+import com.zhouchao.security.jwt.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -27,8 +31,12 @@ public abstract class AbstractLogin implements Login {
     public ResultVo<Object> doLogin(AuthLogin authLogin) throws ValidException {
         log.info("begin AbstractLogin.doLogin:" + authLogin.getUsername());
         validate(authLogin);
-        doProcessor(authLogin);
-        return ResultVo.success();
+        SysUser user = doProcessor(authLogin);
+        Map<String, Object> payload = new HashMap<>();
+        payload.put("userid", user.getId());
+        payload.put("username", user.getName());
+        String token = JwtUtils.generatorToken(payload);
+        return ResultVo.success(token);
     }
 
     /**
@@ -49,6 +57,7 @@ public abstract class AbstractLogin implements Login {
      * 登录校验
      *
      * @param authLogin
+     * @return
      */
-    public abstract void doProcessor(AuthLogin authLogin);
+    public abstract SysUser doProcessor(AuthLogin authLogin);
 }

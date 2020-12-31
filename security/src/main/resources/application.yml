@@ -10,8 +10,6 @@ spring:
     username: root
     password: zhouchao
 
-
 jwt:
-  secret: wojiushisuibianyixiefanzhengniyebuzhidao
   header: Authorization
   path: /login

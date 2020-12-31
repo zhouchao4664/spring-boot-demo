@@ -14,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
-import javax.xml.bind.ValidationException;
-
 /**
  * @Author zhouchao
  * @Date 2020/12/30 14:14
@@ -41,7 +39,7 @@ public class NormalLoginProcessor extends AbstractLogin {
     }
 
     @Override
-    public void doProcessor(AuthLogin authLogin) {
+    public SysUser doProcessor(AuthLogin authLogin) {
         log.info("begin NormalLoginProcesser.doProcessor:" + authLogin);
         SysUser user = sysUserMapper.selectOne(new LambdaQueryWrapper<SysUser>().eq(SysUser::getName, authLogin.getUsername()));
         if (user == null) {
@@ -51,5 +49,6 @@ public class NormalLoginProcessor extends AbstractLogin {
         if (!DigestUtils.md5DigestAsHex(authLogin.getPassword().getBytes()).equals(user.getPwd())) {
             throw new AuthException(GlobalErrorCode.ACCOUNT_DISABLED);
         }
+        return user;
     }
 }

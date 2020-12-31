@@ -1,5 +1,6 @@
 package com.zhouchao.security.core;
 
+import com.zhouchao.security.core.exception.GlobalErrorCode;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
@@ -82,6 +83,18 @@ public class ResultVo<T> {
      */
     public static <T> ResultVo<T> failure(String code, String msg, T data) {
         return handleRs(code, msg, data);
+    }
+
+    /**
+     * 失败
+     *
+     * @param globalErrorCode
+     * @param data
+     * @param <T>
+     * @return
+     */
+    public static <T> ResultVo<T> failure(GlobalErrorCode globalErrorCode, T data) {
+        return handleRs(globalErrorCode.getCode(), globalErrorCode.getMessage(), data);
     }
 
 
