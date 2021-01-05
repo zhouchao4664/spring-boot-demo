@@ -57,11 +57,11 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(loginPath).permitAll() // 登录请求拥有所有权限
+                //.antMatchers(loginPath).permitAll() // 不需要认证的请求地址
                 .anyRequest().authenticated() //其余请求都要认证
 
                 //登录的处理器
-                .and().formLogin()
+                .and().formLogin().loginProcessingUrl(loginPath)
                 .successHandler(restAuthenticationSuccessHandler)
                 .failureHandler(restAuthenticationFailureHandler)
                 .permitAll()
