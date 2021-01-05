@@ -1,6 +1,6 @@
 package com.zhouchao.security.config;
 
-import com.zhouchao.security.service.UserService;
+import com.zhouchao.security.login.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,7 +18,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private UserDetailServiceImpl userDetailServiceImpl;
 
 
     @Autowired
@@ -31,7 +31,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .password("{noop}123") //{noop}表示不加密
                 .authorities("ADMIN");*/
 
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(userDetailServiceImpl).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override

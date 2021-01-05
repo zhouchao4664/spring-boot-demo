@@ -1,4 +1,4 @@
-package com.zhouchao.security.service;
+package com.zhouchao.security.login;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zhouchao.security.dao.SysUserMapper;
@@ -21,7 +21,7 @@ import java.util.List;
  * @Description
  **/
 @Service
-public class UserService implements UserDetailsService {
+public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     SysUserMapper sysUserMapper;
@@ -37,7 +37,6 @@ public class UserService implements UserDetailsService {
         SimpleGrantedAuthority auth = new SimpleGrantedAuthority("ROLE_ROOT");
         authorities.add(auth);
 
-//        UserDetails user = new User(username,"$2a$10$87qJ3tAQrzQFjrfJIr3WyO1o.YISKt928QRYExIYm338DCme.b9Jm",authorities);
         UserDetails user = new User(username,
                 sysUser.getPwd(),
                 true,

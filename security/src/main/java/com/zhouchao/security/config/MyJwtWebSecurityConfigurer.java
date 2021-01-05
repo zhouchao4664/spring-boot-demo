@@ -2,7 +2,7 @@ package com.zhouchao.security.config;
 
 import com.zhouchao.security.core.auth.*;
 import com.zhouchao.security.jwt.JwtAuthenticationFilter;
-import com.zhouchao.security.service.UserService;
+import com.zhouchao.security.login.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Autowired
-    private UserService userService;
+    private UserDetailServiceImpl userDetailServiceImpl;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -51,7 +51,7 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+        auth.userDetailsService(userDetailServiceImpl).passwordEncoder(bCryptPasswordEncoder);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .logoutSuccessHandler(restLogoutSuccessHandler)
                 .permitAll()
 
-                .and().rememberMe().userDetailsService(userService)
+                .and().rememberMe().userDetailsService(userDetailServiceImpl)
                 .and().httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint).and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 使用 JWT，关闭token
         ;

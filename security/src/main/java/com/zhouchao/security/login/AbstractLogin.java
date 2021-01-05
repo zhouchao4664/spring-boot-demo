@@ -1,4 +1,4 @@
-package com.zhouchao.security.biz;
+package com.zhouchao.security.login;
 
 import com.zhouchao.security.core.ResultVo;
 import com.zhouchao.security.core.exception.ValidException;
