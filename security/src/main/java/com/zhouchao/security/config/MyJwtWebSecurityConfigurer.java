@@ -1,16 +1,18 @@
 package com.zhouchao.security.config;
 
+import com.zhouchao.security.core.auth.*;
+import com.zhouchao.security.jwt.JwtAuthenticationFilter;
 import com.zhouchao.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * @Author zhouchao
@@ -21,10 +23,28 @@ import org.springframework.security.web.authentication.logout.HttpStatusReturnin
 public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    private RestAccessDeniedHandler restAccessDeniedHandler;
+
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+    @Autowired
+    private RestAuthenticationFailureHandler restAuthenticationFailureHandler;
+
+    @Autowired
+    private RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
+
+    @Autowired
+    private RestLogoutSuccessHandler restLogoutSuccessHandler;
 
     @Value("${jwt.path}")
     private String loginPath;
@@ -37,11 +57,27 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(loginPath).permitAll()
-                .anyRequest().authenticated()
-                .and().logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
-                .and().rememberMe()
-                .and().httpBasic().and().csrf().disable();
+                .antMatchers(loginPath).permitAll() // 登录请求拥有所有权限
+                .anyRequest().authenticated() //其余请求都要认证
+
+                //登录的处理器
+                .and().formLogin()
+                .successHandler(restAuthenticationSuccessHandler)
+                .failureHandler(restAuthenticationFailureHandler)
+                .permitAll()
+
+                //退出的处理器
+                .and().logout().logoutUrl("/logout")
+                .logoutSuccessHandler(restLogoutSuccessHandler)
+                .permitAll()
+
+                .and().rememberMe().userDetailsService(userService)
+                .and().httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint).and().csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // 使用 JWT，关闭token
+        ;
+
+        http.exceptionHandling().accessDeniedHandler(restAccessDeniedHandler);
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
 
