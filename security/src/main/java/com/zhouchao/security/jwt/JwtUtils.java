@@ -20,6 +20,11 @@ import java.util.Map;
  **/
 @Slf4j
 public class JwtUtils {
+    public final static String USERNAME = "username";
+    public final static String CREATED = "created";
+    public final static String AUTHORITIES = "authorities";
+
+
     private static String SECRET_KEY = "wojiushisuibianyixiefanzhengniyebuzhidao";
 
     private static Key getKeyInstance() {

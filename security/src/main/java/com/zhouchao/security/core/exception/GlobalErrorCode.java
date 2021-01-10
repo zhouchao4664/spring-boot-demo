@@ -35,6 +35,8 @@ public enum GlobalErrorCode {
     ACCOUNT_DISABLED("401102", "密码错误"),
     ACCOUNT_EMPTY("401103", "账号或者密码不能为空"),
     AUTH_ERROR("401104", "认证失败"),
+    ACCESS_DENIED("401105","权限不足"),
+    NOT_LOGIN("401106","用户未登录"),
 
 
     /**

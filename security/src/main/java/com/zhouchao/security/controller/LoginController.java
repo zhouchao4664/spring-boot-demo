@@ -1,24 +1,24 @@
 package com.zhouchao.security.controller;
 
-import com.baomidou.mybatisplus.extension.api.R;
-import com.zhouchao.security.biz.AbstractLogin;
-import com.zhouchao.security.biz.Login;
 import com.zhouchao.security.core.ResultVo;
 import com.zhouchao.security.core.exception.GlobalErrorCode;
 import com.zhouchao.security.dto.AuthLogin;
+import com.zhouchao.security.login.AbstractLogin;
+import com.zhouchao.security.login.Login;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 /**
  * @Author zhouchao
- * @Date 2020/12/28 14:17
+ * @Date 2021/1/5 15:44
  * @Description
  **/
 @RestController
+@RequestMapping("/user")
 public class LoginController {
 
     @PostMapping("/login")

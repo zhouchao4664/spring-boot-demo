@@ -11,5 +11,4 @@ spring:
     password: zhouchao
 
 jwt:
-  header: Authorization
-  path: /login
+  path: /user/login

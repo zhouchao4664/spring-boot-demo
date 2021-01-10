@@ -1,4 +1,4 @@
-package com.zhouchao.security.biz;
+package com.zhouchao.security.login;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.zhouchao.security.core.exception.AuthException;

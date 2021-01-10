@@ -1,4 +1,4 @@
-package com.zhouchao.security.service;
+package com.zhouchao.security.login;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.zhouchao.security.dao.SysUserMapper;
@@ -6,6 +6,7 @@ import com.zhouchao.security.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +21,7 @@ import java.util.List;
  * @Description
  **/
 @Service
-public class UserService implements UserDetailsService {
+public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
     SysUserMapper sysUserMapper;
@@ -36,18 +37,15 @@ public class UserService implements UserDetailsService {
         SimpleGrantedAuthority auth = new SimpleGrantedAuthority("ROLE_ROOT");
         authorities.add(auth);
 
-//        UserDetails user = new User(username,"$2a$10$87qJ3tAQrzQFjrfJIr3WyO1o.YISKt928QRYExIYm338DCme.b9Jm",authorities);
-//        UserDetails user = new User(username,
-//                "$2a$10$87qJ3tAQrzQFjrfJIr3WyO1o.YISKt928QRYExIYm338DCme.b9Jm",
-//                true,
-//                true,
-//                true,
-//                true,
-//                authorities);
+        UserDetails user = new User(username,
+                sysUser.getPwd(),
+                true,
+                true,
+                true,
+                true,
+                authorities);
 
-
-
-        return null;
+        return user;
     }
 
     public SysUser findByUserName(String name) {

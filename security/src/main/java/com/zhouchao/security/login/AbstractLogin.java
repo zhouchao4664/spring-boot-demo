@@ -1,4 +1,4 @@
-package com.zhouchao.security.biz;
+package com.zhouchao.security.login;
 
 import com.zhouchao.security.core.ResultVo;
 import com.zhouchao.security.core.exception.ValidException;
@@ -32,11 +32,9 @@ public abstract class AbstractLogin implements Login {
         log.info("begin AbstractLogin.doLogin:" + authLogin.getUsername());
         validate(authLogin);
         SysUser user = doProcessor(authLogin);
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("userid", user.getId());
-        payload.put("username", user.getName());
-        String token = JwtUtils.generatorToken(payload);
-        return ResultVo.success(token);
+        // TODO do something
+
+        return ResultVo.success();
     }
 
     /**
