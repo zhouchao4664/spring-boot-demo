@@ -11,4 +11,5 @@ spring:
     password: zhouchao
 
 jwt:
-  path: /user/login
+  login: /**/user/login
+  logout: /**/user/logout
