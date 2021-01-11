@@ -3,8 +3,9 @@ package demo.sort;
 import java.util.stream.Stream;
 
 /**
- * 2019/3/12
- * zhouchao
+ * @Auther: zhouc
+ * @Date: 2021/1/10 23:31
+ * @Description:
  */
 public class QuickSort<T extends Comparable<T>> implements Sort<T> {
     @Override
@@ -16,7 +17,8 @@ public class QuickSort<T extends Comparable<T>> implements Sort<T> {
 
     private void quickSort(T[] values, int low, int high) {
 
-        int start = low;
+        // 自己写的，太啰嗦了
+        /*int start = low;
         int end = high;
         T key = values[low];
 
@@ -46,7 +48,25 @@ public class QuickSort<T extends Comparable<T>> implements Sort<T> {
         }
         if (end < high) {
             quickSort(values, end + 1, high);
+        }*/
+
+        if (high <= low) return;
+        int pivot = high;
+        int counter = low;
+        for (int i = low; i < high; i++) {
+            if (values[i].compareTo(values[pivot]) < 0) {
+                T temp = values[counter];
+                values[counter] = values[i];
+                values[i] = temp;
+                counter++;
+            }
         }
+        T temp = values[pivot];
+        values[pivot] = values[counter];
+        values[counter] = temp;
+
+        quickSort(values, low, counter - 1);
+        quickSort(values, counter + 1, high);
     }
 
 
