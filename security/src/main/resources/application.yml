@@ -1,5 +1,8 @@
 server:
   port: 8881
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
 
 spring:
   application:
