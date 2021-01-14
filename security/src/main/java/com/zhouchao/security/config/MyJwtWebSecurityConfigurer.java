@@ -46,8 +46,11 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Autowired
     private RestLogoutSuccessHandler restLogoutSuccessHandler;
 
-    @Value("${jwt.path}")
-    private String loginPath;
+    @Value("${jwt.login}")
+    private String login;
+
+    @Value("${jwt.logout}")
+    private String logout;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -61,13 +64,13 @@ public class MyJwtWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated() //其余请求都要认证
 
                 //登录的处理器
-                .and().formLogin().loginProcessingUrl(loginPath)
+                .and().formLogin().loginProcessingUrl(login)
                 .successHandler(restAuthenticationSuccessHandler)
                 .failureHandler(restAuthenticationFailureHandler)
                 .permitAll()
 
                 //退出的处理器
-                .and().logout().logoutUrl("/logout")
+                .and().logout().logoutUrl(logout)
                 .logoutSuccessHandler(restLogoutSuccessHandler)
                 .permitAll()
 
