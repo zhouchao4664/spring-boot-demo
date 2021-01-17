@@ -8,15 +8,14 @@ package demo.leecode.easy;
 public class Rob {
     public int rob(int[] nums) {
         if (nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0];
 
-        int[] result = new int[nums.length];
-        result[0] = nums[0];
-        result[1] = Math.max(nums[0], nums[1]);
-
-        for (int i = 2; i < nums.length; i++) {
-            result[i] = Math.max(result[i - 2] + nums[i], result[i - 1]);
+        int prev = 0;
+        int curr = 0;
+        for (int num : nums) {
+            int temp = Math.max(prev + num, curr);
+            prev = curr;
+            curr = temp;
         }
-        return result[nums.length - 1];
+        return curr;
     }
 }
