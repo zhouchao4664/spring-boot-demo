@@ -3,7 +3,7 @@ package demo.leecode.easy;
 /**
  * @Author zhouchao
  * @Date 2020/11/23 20:20
- * @Description https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+ * @Description https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/ 26. 删除排序数组中的重复项
  **/
 
 public class RemoveDuplicates {
