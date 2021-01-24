@@ -9,7 +9,6 @@ import java.util.stream.Stream;
  * @Description: https://leetcode-cn.com/problems/word-ladder/description/ 127. 单词接龙
  */
 public class LadderLength {
-    int n = 0;
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         int end = wordList.indexOf(endWord);
@@ -50,7 +49,6 @@ public class LadderLength {
                     // 保存第j位的原始字符
                     char c0 = chars[j];
                     for (char c = 'a'; c <= 'z'; ++c) {
-                        System.out.println(++n);
                         chars[j] = c;
                         String newString = new String(chars);
                         // 已经访问过了，跳过
