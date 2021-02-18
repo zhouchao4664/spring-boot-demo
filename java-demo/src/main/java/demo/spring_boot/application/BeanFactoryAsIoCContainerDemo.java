@@ -20,7 +20,7 @@ public class BeanFactoryAsIoCContainerDemo {
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
 
         // XML配置文件路径
-        String location = "classpath:application.xml";
+        String location = "classpath:META-INF/application.xml";
 
         // 加载配置
         int beanDefinitionsCount = reader.loadBeanDefinitions(location);
