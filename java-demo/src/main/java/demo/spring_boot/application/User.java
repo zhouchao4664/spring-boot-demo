@@ -16,4 +16,12 @@ public class User {
     private int age;
     private String address;
 
+    public static User createUser() {
+        User user = new User();
+        user.setId(1);
+        user.setName("小孤枫");
+        user.setAge(32);
+        user.setAddress("北京");
+        return user;
+    }
 }
