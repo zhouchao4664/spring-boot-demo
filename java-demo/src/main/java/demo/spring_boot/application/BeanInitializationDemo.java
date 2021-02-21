@@ -5,6 +5,7 @@ import demo.spring_boot.application.factory.UserFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 
 
 /**
@@ -23,14 +24,22 @@ public class BeanInitializationDemo {
         // 启动spring上下文
         annotationConfigApplicationContext.refresh();
 
+        // 非延迟初始化再 Spring 应用上下文启动完成后，被初始化
+        System.out.println("Spring 应用上下文已启动...");
+
         // 依赖查找 UserFactory
         UserFactory userFactory = annotationConfigApplicationContext.getBean(UserFactory.class);
 
+        System.out.println("Spring 应用上下文准备关闭...");
+
         // 显示关闭Spring应用上下文
         annotationConfigApplicationContext.close();
+
+        System.out.println("Spring 应用上下文已关闭...");
     }
 
-    @Bean(initMethod = "initUserFactory")
+    @Bean(initMethod = "initUserFactory",destroyMethod = "doDestroy")
+    @Lazy(false)
     public UserFactory userFactory(){
         return new DefaultUserFactory();
     }
