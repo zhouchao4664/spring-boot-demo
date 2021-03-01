@@ -1,8 +1,7 @@
-package demo.spring_boot.application;
+package demo.spring_boot.application.spring.bean;
 
-import demo.spring_boot.application.factory.DefaultUserFactory;
-import demo.spring_boot.application.factory.UserFactory;
-import org.springframework.beans.factory.BeanFactory;
+import demo.spring_boot.application.spring.bean.factory.DefaultUserFactory;
+import demo.spring_boot.application.spring.bean.factory.UserFactory;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

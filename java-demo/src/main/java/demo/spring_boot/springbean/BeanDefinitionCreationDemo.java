@@ -1,6 +1,6 @@
 package demo.spring_boot.springbean;
 
-import demo.spring_boot.application.User;
+import demo.spring_boot.application.spring.bean.User;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;

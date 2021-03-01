@@ -1,6 +1,6 @@
-package demo.spring_boot.application.factory;
+package demo.spring_boot.application.spring.bean.factory;
 
-import demo.spring_boot.application.User;
+import demo.spring_boot.application.spring.bean.User;
 
 /**
  * @Author zhouchao

@@ -1,4 +1,4 @@
-package demo.spring_boot.application.factory;
+package demo.spring_boot.application.spring.bean.factory;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;

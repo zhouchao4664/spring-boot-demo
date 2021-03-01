@@ -1,7 +1,7 @@
-package demo.spring_boot.application;
+package demo.spring_boot.application.spring.bean;
 
-import demo.spring_boot.application.factory.DefaultUserFactory;
-import demo.spring_boot.application.factory.UserFactory;
+import demo.spring_boot.application.spring.bean.factory.DefaultUserFactory;
+import demo.spring_boot.application.spring.bean.factory.UserFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

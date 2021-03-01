@@ -1,4 +1,4 @@
-package demo.spring_boot.application;
+package demo.spring_boot.application.spring.bean;
 
 import lombok.Data;
 import lombok.ToString;

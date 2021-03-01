@@ -1,6 +1,5 @@
-package demo.spring_boot.application;
+package demo.spring_boot.application.spring.bean;
 
-import demo.spring_boot.application.factory.UserFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**

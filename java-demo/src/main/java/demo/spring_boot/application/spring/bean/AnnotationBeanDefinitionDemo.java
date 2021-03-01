@@ -1,4 +1,4 @@
-package demo.spring_boot.application;
+package demo.spring_boot.application.spring.bean;
 
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
