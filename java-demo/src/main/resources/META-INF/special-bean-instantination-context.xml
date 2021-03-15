@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="userFactoryServiceLoader" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
-        <property name="serviceType" value="demo.spring_boot.application.spring.bean.factory.UserFactory"/>
+        <property name="serviceType" value="demo.springboot.application.spring.bean.factory.UserFactory"/>
     </bean>
 
 
