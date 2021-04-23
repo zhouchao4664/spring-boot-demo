@@ -3,6 +3,7 @@ package com.zhouchao.config.datasource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.datasource.DataSourceException;
+import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
@@ -46,18 +47,24 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
             final DataSource dataSource = dataSource(datasource);
             if (datasource.getIsDefault()) defaultDataSource = dataSource;
             dataSources.put(key, dataSource);
-            dataBinder(dataSource,environment,key);
+            dataBinder(dataSource, environment, key);
         });
     }
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-        final Map<Object,Object> targetDataSources = new HashMap<>();
-        targetDataSources.put("dataSource",defaultDataSource);
+        final Map<Object, Object> targetDataSources = new HashMap<>();
+        targetDataSources.put("dataSource", defaultDataSource);
         targetDataSources.putAll(dataSources);
+
         final GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
         beanDefinition.setBeanClass(DynamicDataSource.class);
         beanDefinition.setSynthetic(true);
+
+        final MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
+        propertyValues.addPropertyValue("defaultTargetDataSource", defaultDataSource);
+        propertyValues.addPropertyValue("targetDataSources", targetDataSources);
+        registry.registerBeanDefinition("dataSource", beanDefinition);
     }
 
     private DataSource dataSource(DataSourceProperties.Datasource datasource) {

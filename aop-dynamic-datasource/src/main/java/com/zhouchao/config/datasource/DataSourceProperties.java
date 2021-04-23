@@ -17,14 +17,33 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "spring.datasource.dynamic")
 public class DataSourceProperties {
 
-    private Map<String, Datasource> datasource;
+    private Map<String, Datasource> datasources;
 
     @Data
     public class Datasource {
+        /**
+         * 默认数据源
+         */
         private Boolean isDefault = false;
+
+        /**
+         * 驱动
+         */
         private String driverClassName;
+
+        /**
+         * 数据库地址
+         */
         private String url;
+
+        /**
+         * 用户名
+         */
         private String username;
+
+        /**
+         * 密码
+         */
         private String password;
     }
 }
