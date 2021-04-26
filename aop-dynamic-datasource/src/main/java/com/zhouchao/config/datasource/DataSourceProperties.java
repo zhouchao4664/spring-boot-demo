@@ -2,9 +2,7 @@ package com.zhouchao.config.datasource;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
-import javax.sql.DataSource;
 import java.util.Map;
 
 /**
@@ -13,14 +11,12 @@ import java.util.Map;
  * @Description
  **/
 @Data
-@Configuration //不要这个注解也可以，看着有红线不舒服
-@ConfigurationProperties(prefix = "spring.datasource.dynamic")
+@ConfigurationProperties(prefix = "spring.dynamic")
 public class DataSourceProperties {
-
     private Map<String, Datasource> datasources;
 
     @Data
-    public class Datasource {
+    public static class Datasource {
         /**
          * 默认数据源
          */

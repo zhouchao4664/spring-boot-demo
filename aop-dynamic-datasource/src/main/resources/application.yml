@@ -1,17 +1,17 @@
 spring:
-  datasource:
-    dynamic:
-      datasource:
-        ds1:
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://10.10.10.111:3306/zhouchao1?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
-          username: root
-          password: Raykite_888!
-        ds2:
-          driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://10.10.10.111:3306/zhouchao2?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
-          username: root
-          password: Raykite_888!
+  dynamic:
+    datasources:
+      ds1:
+        is-default: true
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://10.10.10.111:3306/zhouchao1?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+        username: root
+        password: Raykite_888!
+      ds2:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://10.10.10.111:3306/zhouchao2?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+        username: root
+        password: Raykite_888!
 
 mybatis:
   mapperLocations: classpath:mapper/**/*.xml

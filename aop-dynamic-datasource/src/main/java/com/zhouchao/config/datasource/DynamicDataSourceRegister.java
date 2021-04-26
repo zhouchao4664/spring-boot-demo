@@ -5,7 +5,6 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.datasource.DataSourceException;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
-import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.boot.context.properties.bind.Bindable;
 import org.springframework.boot.context.properties.bind.Binder;
@@ -30,13 +29,13 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
 
     private final Map<String, DataSource> dataSources = new HashMap<>();
 
-    private static final String prefix = "spring.datasource.dynamic";
+    private static final String prefix = "spring.dynamic";
 
     @Override
     public void setEnvironment(Environment environment) {
         final Binder binder = Binder.get(environment);
         final DataSourceProperties dataSourceProperties = binder.bind(prefix, DataSourceProperties.class).get();
-        final Map<String, DataSourceProperties.Datasource> datasourceMap = dataSourceProperties.getDatasource();
+        final Map<String, DataSourceProperties.Datasource> datasourceMap = dataSourceProperties.getDatasources();
 
         final long count = datasourceMap.values().stream().filter(DataSourceProperties.Datasource::getIsDefault).count();
 
