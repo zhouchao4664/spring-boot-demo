@@ -45,6 +45,7 @@
 		<mybatis-plus-generator.version>3.2.0</mybatis-plus-generator.version>
 		<zookeeper.version>3.4.8</zookeeper.version>
 		<curator-framework.version>4.0.0</curator-framework.version>
+		<hanlp.version>portable-1.8.1</hanlp.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -202,6 +203,11 @@
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
 				<version>${joda-time.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.hankcs</groupId>
+				<artifactId>hanlp</artifactId>
+				<version>${hanlp.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
