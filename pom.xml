@@ -47,6 +47,7 @@
         <curator-framework.version>4.0.0</curator-framework.version>
         <hanlp.version>portable-1.8.1</hanlp.version>
         <xxl-job-version>2.3.0</xxl-job-version>
+        <freemarker>2.3.0</freemarker>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -215,6 +216,11 @@
                 <artifactId>xxl-job-core</artifactId>
                 <version>${xxl-job-version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -231,6 +237,7 @@
         <module>elasticsearch</module>
         <module>aop-dynamic-datasource</module>
         <module>xxl-job</module>
+        <module>mybatis-plus-generator</module>
     </modules>
     <build>
         <plugins>

@@ -2,10 +2,10 @@ package com.zhouchao.controller;
 
 
 import com.zhouchao.domain.Person;
+import com.zhouchao.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
 
 /**
  * {@link RestController}
@@ -15,11 +15,12 @@ import java.awt.*;
 @RestController
 public class PersonRestController {
 
+    @Autowired
+    private PersonService personService;
+
     @GetMapping("/person/{id}")
-    public Person person(@PathVariable Long id, @RequestParam(required = false) String name){
-        Person person = new Person();
-        person.setId(id);
-        person.setName(name);
+    public Person person(@PathVariable Integer id, @RequestParam(required = false) String name){
+        Person person = personService.selectPerson(id,name);
         return person;
     }
 

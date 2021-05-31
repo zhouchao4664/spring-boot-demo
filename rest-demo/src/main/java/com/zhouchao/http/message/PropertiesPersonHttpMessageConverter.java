@@ -54,7 +54,7 @@ public class PropertiesPersonHttpMessageConverter extends AbstractHttpMessageCon
         properties.load(inputStream);
 
         Person person = new Person();
-        person.setId(Long.valueOf(properties.getProperty("person.id")));
+        person.setId(Integer.valueOf(properties.getProperty("person.id")));
         person.setName(properties.getProperty("person.name"));
 
         return person;
