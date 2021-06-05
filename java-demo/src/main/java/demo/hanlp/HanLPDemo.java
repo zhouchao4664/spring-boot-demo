@@ -26,7 +26,7 @@ public class HanLPDemo {
     // 产品列表文件
     private static String productFilePath = "E:\\file\\100样本.txt";
     // 测试用的文本
-    private static String text = "男女防紫外线冰袖";
+    private static String text = "云南本草脚气喷剂止痒脱皮脚丫脚痒脚臭泡脚水烂杀菌喷雾非藥除臭";
 
     public static void main(String[] args) {
 //        WordVectorModel wordVectorModel = trainOrLoadModel();
