@@ -11,15 +11,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolExecutorDemo {
 
-    public static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5,
+    public static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(0,
             10,
             30,
             TimeUnit.SECONDS,
-            new LinkedBlockingQueue<Runnable>(),
+            new LinkedBlockingQueue<Runnable>(10),
             Executors.defaultThreadFactory(),
             new ThreadPoolExecutor.AbortPolicy());
 
     public static void main(String[] args) {
-        threadPoolExecutor.submit(new Thread());
+        threadPoolExecutor.submit(()->{
+            System.out.println("线程执行");
+        });
     }
 }
