@@ -47,7 +47,8 @@
         <curator-framework.version>4.0.0</curator-framework.version>
         <hanlp.version>portable-1.8.1</hanlp.version>
         <xxl-job-version>2.3.0</xxl-job-version>
-        <freemarker>2.3.0</freemarker>
+        <freemarker.version>2.3.0</freemarker.version>
+        <jsoup.version>1.13.1</jsoup.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -221,6 +222,11 @@
                 <artifactId>freemarker</artifactId>
                 <version>${freemarker.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -238,6 +244,7 @@
         <module>aop-dynamic-datasource</module>
         <module>xxl-job</module>
         <module>mybatis-plus-generator</module>
+        <module>jsoup-demo</module>
     </modules>
     <build>
         <plugins>
