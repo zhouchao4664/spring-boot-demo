@@ -1,4 +1,4 @@
-package demo.poi;
+package demo.poi.ppt;
 
 import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 

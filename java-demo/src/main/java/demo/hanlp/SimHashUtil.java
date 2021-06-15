@@ -76,7 +76,7 @@ public class SimHashUtil {
             sb.append(term.word);
             sb.append(" ");
         }
-        System.out.println(sb.toString());
+//        System.out.println(sb.toString());
 
         //对分词的一些特殊处理 : 比如: 根据词性添加权重 , 过滤掉标点符号 , 过滤超频词汇等;
         // 词性的权重
