@@ -25,7 +25,7 @@
         <elasticsearch.version>7.2.0</elasticsearch.version>
         <jackson-databind.version>2.11.2</jackson-databind.version>
         <rxjava.version>1.0.10</rxjava.version>
-        <org.apache.poi.version>4.1.2</org.apache.poi.version>
+        <poi.version>4.1.2</poi.version>
         <activemq-all.version>5.15.9</activemq-all.version>
         <kafka-clients.version>1.1.0</kafka-clients.version>
         <spring-kafka.version>2.2.2.RELEASE</spring-kafka.version>
@@ -120,27 +120,27 @@
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi</artifactId>
-                <version>${org.apache.poi.version}</version>
+                <version>${poi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml</artifactId>
-                <version>${org.apache.poi.version}</version>
+                <version>${poi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml-schemas</artifactId>
-                <version>${org.apache.poi.version}</version>
+                <version>${poi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-scratchpad</artifactId>
-                <version>${org.apache.poi.version}</version>
+                <version>${poi.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-excelant</artifactId>
-                <version>${org.apache.poi.version}</version>
+                <version>${poi.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
