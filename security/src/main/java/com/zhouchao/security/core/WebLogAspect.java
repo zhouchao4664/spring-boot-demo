@@ -14,9 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
- * User: zyc
- * Description:
- */
+ * @Author zhouchao
+ * @Date 2020/12/30 14:14
+ * @Description
+ **/
 @Aspect
 @Component
 @Slf4j
