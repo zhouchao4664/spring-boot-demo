@@ -43,7 +43,7 @@
         <dynamic-datasource.version>3.2.1</dynamic-datasource.version>
         <spring-cloud-context.version>2.2.3.RELEASE</spring-cloud-context.version>
         <mybatis-plus-generator.version>3.2.0</mybatis-plus-generator.version>
-        <zookeeper.version>3.4.8</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <curator-framework.version>4.0.0</curator-framework.version>
         <hanlp.version>portable-1.8.1</hanlp.version>
         <xxl-job-version>2.3.0</xxl-job-version>
