@@ -33,7 +33,7 @@
         <quartz.version>2.2.3</quartz.version>
         <spring-context-support.version>3.2.3.RELEASE</spring-context-support.version>
         <fastJson.version>1.2.22</fastJson.version>
-        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <druid.version>1.1.6</druid.version>
         <jwt.version>1.0.9.RELEASE</jwt.version>
         <jjwt.version>0.9.1</jjwt.version>
