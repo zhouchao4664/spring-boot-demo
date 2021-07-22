@@ -15,7 +15,7 @@ import java.net.InetSocketAddress;
  */
 public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workGroup = new NioEventLoopGroup();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
         serverBootstrap.group(bossGroup,workGroup)
