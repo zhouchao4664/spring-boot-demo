@@ -37,7 +37,7 @@ public class NettyHttpServer {
                             ch.pipeline().addLast(new NettyHttpServerHandler());
                         }
                     });
-            ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(port);
             channelFuture.addListener((ChannelFutureListener) future -> {
                 if (future.isSuccess()) {
                     System.out.println("端口绑定成功!");
@@ -49,7 +49,7 @@ public class NettyHttpServer {
             channelFuture.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             bossGroup.shutdownGracefully();
             workGroup.shutdownGracefully();
         }
