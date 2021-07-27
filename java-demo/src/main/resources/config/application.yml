@@ -1,3 +1,0 @@
-pname: configDemo
-test:
-  random: ${random.int(1,100)}
