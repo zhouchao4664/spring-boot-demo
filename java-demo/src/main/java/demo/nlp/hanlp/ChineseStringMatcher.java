@@ -1,4 +1,4 @@
-package demo.hanlp;
+package demo.nlp.hanlp;
 
 import org.apache.commons.collections4.SetUtils;
 

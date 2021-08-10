@@ -52,6 +52,8 @@
         <netty.version>4.1.42.Final</netty.version>
         <jol-core.version>0.8</jol-core.version>
         <ikanalyzer.version>2012_u6</ikanalyzer.version>
+        <aliyun-java-sdk-core.version>4.5.13</aliyun-java-sdk-core.version>
+        <aliyun-java-sdk-alinlp.version>1.0.16</aliyun-java-sdk-alinlp.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -244,6 +246,16 @@
                 <groupId>com.janeluo</groupId>
                 <artifactId>ikanalyzer</artifactId>
                 <version>${ikanalyzer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-alinlp</artifactId>
+                <version>${aliyun-java-sdk-alinlp.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

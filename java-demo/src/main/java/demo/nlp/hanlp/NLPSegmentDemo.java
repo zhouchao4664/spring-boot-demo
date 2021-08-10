@@ -1,7 +1,6 @@
-package demo.hanlp;
+package demo.nlp.hanlp;
 
 import com.hankcs.hanlp.seg.common.Term;
-import com.hankcs.hanlp.tokenizer.NLPTokenizer;
 import com.hankcs.hanlp.tokenizer.NotionalTokenizer;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;

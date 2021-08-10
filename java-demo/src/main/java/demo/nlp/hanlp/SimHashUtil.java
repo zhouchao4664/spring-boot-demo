@@ -1,4 +1,4 @@
-package demo.hanlp;
+package demo.nlp.hanlp;
 
 /**
  * @Author: zhouchao

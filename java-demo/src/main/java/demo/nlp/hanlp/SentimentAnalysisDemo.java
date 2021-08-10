@@ -1,4 +1,4 @@
-package demo.hanlp;
+package demo.nlp.hanlp;
 
 import com.hankcs.hanlp.classification.classifiers.IClassifier;
 import com.hankcs.hanlp.classification.classifiers.NaiveBayesClassifier;

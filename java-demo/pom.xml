@@ -74,9 +74,18 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!-- nlp -->
         <dependency>
             <groupId>com.hankcs</groupId>
             <artifactId>hanlp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-alinlp</artifactId>
         </dependency>
 
         <!-- excel -->

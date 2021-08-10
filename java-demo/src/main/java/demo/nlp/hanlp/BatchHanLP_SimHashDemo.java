@@ -1,8 +1,5 @@
-package demo.hanlp;
+package demo.nlp.hanlp;
 
-import com.hankcs.hanlp.mining.word2vec.DocVectorModel;
-import com.hankcs.hanlp.mining.word2vec.Word2VecTrainer;
-import com.hankcs.hanlp.mining.word2vec.WordVectorModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

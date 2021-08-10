@@ -1,4 +1,4 @@
-package demo.hanlp;
+package demo.nlp.hanlp;
 
 import com.hankcs.hanlp.mining.word2vec.DocVectorModel;
 import com.hankcs.hanlp.mining.word2vec.Word2VecTrainer;
@@ -11,22 +11,25 @@ import lombok.ToString;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.PriorityQueue;
 
 /**
  * @Author: zhouchao
  * @Date: 2021/05/27 11:08
  * @Description: 基于hanlp实现自然语言处理  https://github.com/hankcs/HanLP
  */
-public class HanLPDemo {
+public class BatchHanLPDemo {
     // 词典
     private static String trainFileName = "E:\\file\\taobao_jd_pdd_content.txt";
     // 训练后的词典文件
     private static String modelFileName = "E:\\file\\taobao_jd_pdd_content-msr.txt";
+
     // 产品列表文件
-    private static String productFilePath = "E:\\file\\taobao_jd_pdd.txt";
-    // 测试用的文本
-    private static String text = "俏歌洗衣液3kgX4瓶促销组合装薰衣草去渍整箱批发机手洗香味持久";
+    private static String productFilePath = "E:\\file\\batch_text_case.txt";
+    // 测试用的keyword文本文件
+    private static String textFilePath = "E:\\file\\batch_text.txt";
+
+    // 步长
+    private static int step = 10;
 
     public static void main(String[] args) {
 //        WordVectorModel wordVectorModel = trainOrLoadModel();
@@ -38,28 +41,43 @@ public class HanLPDemo {
         }
         DocVectorModel docVectorModel = new DocVectorModel(wordVectorModel);
 
-        List<String> list = readProductFormFile();
-        int i = 0;
-        for (; i < list.size(); i++) {
-            docVectorModel.addDocument(i, list.get(i));
-        }
-        docVectorModel.addDocument(i + 1, text);
-        PriorityQueue pq = new PriorityQueue(127);
-        for (String s : list) {
-            float similarity = docVectorModel.similarity(text, s);
-            ProductInfo productInfo = new ProductInfo(text, s, similarity);
-            pq.offer(productInfo);
+        List<String> productList = readFile(productFilePath);
+        List<String> textList = readFile(textFilePath);
+
+        // 加载文档
+        loadDocument(docVectorModel, productList, textList);
+
+        List<ProductInfo> productInfoList = new ArrayList<>(productList.size());
+        for (int i = 0; i < textList.size(); i++) {
+            String text = textList.get(i);
+            for (int j = 0; j < step; j++) {
+                String product = productList.get(j + (i * step));
+                float similarity = docVectorModel.similarity(text, product);
+                ProductInfo productInfo = new ProductInfo(text, product, similarity);
+                productInfoList.add(productInfo);
+            }
         }
 
-        for (int j = 0; j < pq.size(); j++) {
-            System.out.println(pq.poll());
+        for (ProductInfo productInfo : productInfoList) {
+            System.out.println(productInfo);
         }
     }
 
-    private static List<String> readProductFormFile() {
+    private static void loadDocument(DocVectorModel docVectorModel, List<String> productList, List<String> textList) {
+        int i = 0;
+        int j = 0;
+        for (; i < productList.size(); i++) {
+            docVectorModel.addDocument(i, productList.get(i));
+        }
+        for (; j < textList.size(); j++) {
+            docVectorModel.addDocument(i + j, textList.get(j));
+        }
+    }
+
+    private static List<String> readFile(String filePath) {
         List<String> result = new ArrayList<>();
         try {
-            FileInputStream fis = new FileInputStream(new File(productFilePath));
+            FileInputStream fis = new FileInputStream(new File(filePath));
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
             String content = null;
