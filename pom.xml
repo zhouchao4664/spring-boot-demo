@@ -48,7 +48,7 @@
         <hanlp.version>portable-1.8.1</hanlp.version>
         <xxl-job-version>2.3.0</xxl-job-version>
         <freemarker.version>2.3.0</freemarker.version>
-        <jsoup.version>1.13.1</jsoup.version>
+        <jsoup.version>1.14.2</jsoup.version>
         <netty.version>4.1.42.Final</netty.version>
         <jol-core.version>0.8</jol-core.version>
         <ikanalyzer.version>2012_u6</ikanalyzer.version>
