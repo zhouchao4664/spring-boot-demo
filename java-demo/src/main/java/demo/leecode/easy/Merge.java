@@ -20,7 +20,7 @@ public class Merge {
         new Merge().merge(nums1, 3, nums2, 3);
 
         for (int i = 0; i < nums1.length; i++) {
-            System.out.print(nums1[i]+" ");
+            System.out.print(nums1[i] + " ");
         }
     }
 
