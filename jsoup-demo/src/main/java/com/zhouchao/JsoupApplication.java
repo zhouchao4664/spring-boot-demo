@@ -15,6 +15,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 @MapperScan("com.zhouchao.dao")
 public class JsoupApplication {
     public static void main(String[] args) {
+        System.setProperty("javax.net.ssl.trustStore","E:\\workspace\\spring-boot-demo\\jsoup-demo\\target\\classes\\jssecacerts");
         SpringApplication.run(JsoupApplication.class, args);
     }
 }
