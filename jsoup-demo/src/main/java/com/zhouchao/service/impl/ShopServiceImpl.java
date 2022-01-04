@@ -1,11 +1,13 @@
 package com.zhouchao.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhouchao.dao.ShopMapper;
 import com.zhouchao.domain.Score;
 import com.zhouchao.domain.Shop;
 import com.zhouchao.handler.shop58.Shop58Handler;
 import com.zhouchao.service.IShopService;
+import com.zhouchao.utils.Shop58Util;
 import com.zhouchao.utils.SimHashUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -14,12 +16,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author zhouchao
@@ -30,7 +35,10 @@ import java.io.IOException;
 public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IShopService {
 
     @Autowired
-    public Shop58Handler shop58Handler;
+    private Shop58Handler shop58Handler;
+
+    @Autowired
+    private ShopMapper shopMapper;
 
     @Override
     public void crawl(String url) {
@@ -44,12 +52,20 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements IS
             for (int i = 0; i < elements.size(); i++) {
                 Element element = elements.get(i);
                 String href = element.attr("href");
+                String houseId = Shop58Util.getHouseId(href);
+                if (!StringUtils.isEmpty(houseId)) {
+                    Shop shop = shopMapper.selectOne(new QueryWrapper<Shop>().lambda().eq(Shop::getHouseId, houseId));
+                    if (shop != null) {
+                        continue;
+                    }
+                }
+
                 shop58Handler.crawl(href);
             }
 
             // 下一页
-            Element nextPage = doc.selectFirst("#class='pager/a[class='next']");
-            if (nextPage == null){
+            Element nextPage = doc.select("div[class='pager']").select("a[class='next']").first();
+            if (nextPage == null) {
                 return;
             }
 

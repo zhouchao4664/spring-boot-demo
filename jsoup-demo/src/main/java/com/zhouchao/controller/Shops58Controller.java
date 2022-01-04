@@ -1,5 +1,6 @@
 package com.zhouchao.controller;
 
+import com.zhouchao.handler.shop58.Shop58Handler;
 import com.zhouchao.service.IShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,9 @@ public class Shops58Controller {
 
     @Autowired
     private IShopService shopService;
+
+    @Autowired
+    private Shop58Handler shop58Handler;
 
     @GetMapping
     public String shops58(){

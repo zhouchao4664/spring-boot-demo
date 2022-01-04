@@ -25,6 +25,9 @@ public class Shop implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @TableField("house_id")
+    private String houseId;
+
     @TableField("shop_name")
     private String shopName;
 
@@ -33,6 +36,9 @@ public class Shop implements Serializable {
 
     @TableField("price")
     private String price;
+
+    @TableField("url")
+    private String url;
 
 
 }
