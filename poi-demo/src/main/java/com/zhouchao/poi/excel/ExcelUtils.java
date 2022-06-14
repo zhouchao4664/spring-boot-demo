@@ -1,5 +1,6 @@
-package demo.poi.excel;
+package com.zhouchao.poi.excel;
 
+import demo.poi.excel.ExcelColumn;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.CharUtils;

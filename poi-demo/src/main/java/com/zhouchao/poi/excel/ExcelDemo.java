@@ -1,6 +1,5 @@
-package demo.poi.excel;
+package com.zhouchao.poi.excel;
 
-import demo.nlp.hanlp.SimHashUtil;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -30,12 +29,7 @@ public class ExcelDemo {
                 if (row.getRowNum() == 0) {
                     continue;
                 }
-
-                String keyword = row.getCell(1).getStringCellValue();
-                String title = row.getCell(2).getStringCellValue();
-                float sim = SimHashUtil.getSemblance(keyword, title);
-
-                row.getCell(8).setCellValue(sim);
+                row.getCell(8).setCellValue(0f);
             }
 
             FileOutputStream fileOut = new FileOutputStream(fileOutputPath);

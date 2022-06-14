@@ -295,6 +295,7 @@
         <module>aop-dynamic-datasource</module>
         <module>xxl-job</module>
         <module>jsoup-demo</module>
+        <module>poi-demo</module>
     </modules>
     <build>
         <plugins>
