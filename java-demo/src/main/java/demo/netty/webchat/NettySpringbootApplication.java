@@ -1,7 +1,6 @@
 package demo.netty.webchat;
 
 import demo.netty.webchat.netty.NettyWebSocketServer;
-import org.apache.xmlbeans.impl.tool.CommandLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

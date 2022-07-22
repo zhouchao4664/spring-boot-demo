@@ -1,4 +1,4 @@
-package demo.generic;
+package demo.base;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 /**
  * @Author zhouchao
  * @Date 2019/8/21 17:20
- * @Description
+ * @Description 方便了解泛型的上限和下限以及泛型的擦除
  **/
 public class GenericParameterTypeDemo {
 
