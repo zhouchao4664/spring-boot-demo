@@ -32,7 +32,7 @@ public class ForAndStream {
     public static void foriMethod() {
         long start = System.currentTimeMillis();
         for (int i = 0; i < INT; i++) {
-
+            ForAndStream.print(i);
         }
         long end = System.currentTimeMillis();
 
@@ -60,7 +60,6 @@ public class ForAndStream {
         long end = System.currentTimeMillis();
         System.out.println("streamParallel循环：" + (end - start));
     }
-
 
     public static void print(Integer i){
 
