@@ -1,6 +1,5 @@
 package com.zhouchao.poi.ppt;
 
-import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 
 /**
  * @Author zhouchao
@@ -10,12 +9,12 @@ import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 
 public class PPT {
 
-    public static void main(String[] args) {
-
-        HSLFSlideShow hslf = new HSLFSlideShow();
-//        hslf.addMovie();
-        hslf.getSoundData();
-    }
+//    public static void main(String[] args) {
+//
+//        HSLFSlideShow hslf = new HSLFSlideShow();
+////        hslf.addMovie();
+//        hslf.getSoundData();
+//    }
 
 
 
