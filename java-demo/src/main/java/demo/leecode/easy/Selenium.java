@@ -1,7 +1,6 @@
 package demo.leecode.easy;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  * @Author zhouchao
@@ -30,22 +29,16 @@ public class Selenium {
         if (b == null) {
             return a;
         }
-        int indexA = 0;
-        int indexB = 0;
+        int indexA = 0, indexB = 0;
         int[] c = new int[a.length + b.length];
         int i = 0;
         for (; indexA + indexB < c.length; i++) {
-            // 相等情况，特殊处理
-            if (b[indexB] == a[indexA]) {
-                c[i] = a[indexA++];
-                indexB++;
-                continue;
-            }
             c[i] = indexA == a.length ? b[indexB++] :
-                    (indexB == b.length ? a[indexA++]:
-                            (b[indexB] > a[indexA] ? a[indexA++] : b[indexB++]));
+                    (indexB == b.length ? a[indexA++] :
+                            (b[indexB] > a[indexA] ? a[indexA++] : (
+                                    b[indexB] < a[indexA] ? b[indexB++] : a[indexA++] + b[indexB] - b[indexB++]
+                            )));
         }
-
         return Arrays.copyOfRange(c, 0, i);
     }
 }
