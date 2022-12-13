@@ -47,7 +47,7 @@
         <zookeeper.version>3.4.8</zookeeper.version>
         <curator-framework.version>4.0.0</curator-framework.version>
         <hanlp.version>portable-1.8.1</hanlp.version>
-        <xxl-job-version>2.3.0</xxl-job-version>
+        <xxl-job-version>2.3.1</xxl-job-version>
         <freemarker.version>2.3.0</freemarker.version>
         <jsoup.version>1.13.1</jsoup.version>
         <netty.version>4.1.42.Final</netty.version>
