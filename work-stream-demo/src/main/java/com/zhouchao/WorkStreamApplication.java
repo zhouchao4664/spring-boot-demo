@@ -1,14 +1,15 @@
-package com.zhouchao.elasticsearch;
+package com.zhouchao;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.zhouchao.elasticsearch.repository")
-public class Application {
+@MapperScan(basePackages = "com.zhouchao.dao")
+public class WorkStreamApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(WorkStreamApplication.class, args);
     }
+
 }

@@ -1,0 +1,19 @@
+server:
+  port: 8882
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+
+spring:
+  application:
+    name: work-stream-demo
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/work_stream?useUnicode=true&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: zhouchao
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.raydata.prize.domain
+  configLocation: classpath:mybatis-config.xml
