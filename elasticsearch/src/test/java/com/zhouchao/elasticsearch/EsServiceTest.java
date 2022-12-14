@@ -1,6 +1,7 @@
 package com.zhouchao.elasticsearch;
 
 import com.zhouchao.elasticsearch.service.EsService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,4 +27,23 @@ public class EsServiceTest {
         esService.testCreateIndex();
     }
 
+    @Ignore
+    public void testDeleteIndex() throws IOException {
+        esService.testDeleteIndex();
+    }
+
+    @Test
+    public void testAddDoc() throws IOException {
+        esService.testAddDoc();
+    }
+
+    @Test
+    public void testGetDoc() throws IOException {
+        esService.testGetDoc();
+    }
+
+    @Test
+    public void testSearchAll() throws IOException {
+        esService.testSearchAll();
+    }
 }
