@@ -13,6 +13,7 @@ public class Question1 {
     public synchronized void push(Object x) {
         synchronized (list) {
             list.addLast(x);
+            System.out.println("执行唤醒");
             notify();
         }
     }
@@ -20,9 +21,30 @@ public class Question1 {
     public synchronized Object pop() throws Exception {
         synchronized (list) {
             if (list.size() <= 0) {
+                System.out.println("等待");
                 wait();
             }
             return list.removeLast();
         }
+    }
+
+    public static void main(String[] args) {
+        Question1 q = new Question1();
+        Thread t1 = new Thread(() -> {
+            try {
+                q.pop();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException();
+            }
+        }, "线程1");
+
+        Thread t2 = new Thread(() -> {
+            Object x = new Object();
+            q.push(x);
+        }, "线程2");
+
+        t1.start();
+        t2.start();
     }
 }
