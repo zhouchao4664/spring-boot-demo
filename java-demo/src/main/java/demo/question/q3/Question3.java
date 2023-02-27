@@ -1,80 +1,34 @@
 package demo.question.q3;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * 1、编写代码，使用3个线程，1个线程打印X，一个线程打印Y，一个线程打印Z，同时执行连续打印10次"XYZ"
  * 2020/5/18
  * zhouchao
  */
 public class Question3 {
-    volatile Boolean lock1 = Boolean.TRUE;
-    volatile Boolean lock2 = Boolean.FALSE;
-    volatile Boolean lock3 = Boolean.FALSE;
-
-    class Thread1 implements Runnable{
-
-        @Override
-        public void run() {
-            for(int i = 0; i<10;i++){
-                if(lock1){
-                    try {
-                        Thread.currentThread().wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println("x");
-                lock1 = Boolean.FALSE;
-                lock2 = Boolean.TRUE;
-                notify();
-            }
-        }
-    }
-
-    class Thread2 implements Runnable{
-        @Override
-        public void run() {
-            for(int i = 0; i<10;i++){
-                if(lock2){
-                    try {
-                        Thread.currentThread().wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println("y");
-                lock2 = Boolean.FALSE;
-                lock3 = Boolean.TRUE;
-                notify();
-            }
-        }
-    }
-
-    class Thread3 implements Runnable{
-        @Override
-        public void run(){
-            for(int i = 0; i<10;i++){
-                if(lock3){
-                    try {
-                        Thread.currentThread().wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.println("z");
-                lock3 = Boolean.FALSE;
-                lock1 = Boolean.TRUE;
-                notify();
-            }
-        }
-    }
+    public static final ReentrantLock LOCK = new ReentrantLock(true);
+    public static final Condition CONDITION = LOCK.newCondition();
 
     public static void main(String[] args) {
-//        Thread1 thread1 = new Thread1();
-//        Thread2 thread2 = new Thread2();
-//        Thread3 thread3 = new Thread3();
-//        thread1.start();
-//        thread2.start();
-//        thread3.start();
+        ThreadX threadX = new ThreadX(LOCK, CONDITION);
+        ThreadY threadY = new ThreadY(LOCK, CONDITION);
+        ThreadZ threadZ = new ThreadZ(LOCK, CONDITION);
+
+        CompletableFuture.runAsync(() -> threadX.start())
+                .thenRun(() -> threadY.start())
+                .thenRun(() -> threadZ.start());
+
+        System.out.println("线程开始运行");
+        LOCK.lock();
+        try {
+            CONDITION.signal();
+        } finally {
+            LOCK.unlock();
+        }
     }
 
 

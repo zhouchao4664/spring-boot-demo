@@ -26,7 +26,7 @@
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/lagou?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;zeroDateTimeBehavior=convertToNull&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
+                          value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;zeroDateTimeBehavior=convertToNull&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"/>
                 <property name="username" value="root"/>
                 <property name="password" value="zhouchao"/>
             </dataSource>
@@ -35,7 +35,7 @@
     
     <mappers>
 <!--        <package name="com.zhouchao.mapper"/>-->
-        <mapper resource="mapper/userMapper.xml" />
+<!--        <mapper resource="mapper/TestUserMapper.xml" />-->
     </mappers>
 
 </configuration>

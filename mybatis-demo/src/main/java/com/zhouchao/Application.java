@@ -1,29 +1,17 @@
 package com.zhouchao;
 
-import com.zhouchao.mapper.IUserMapper;
-import com.zhouchao.pojo.User;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.io.InputStream;
-import java.util.List;
-
+@MapperScan(basePackages = "com.zhouchao.mapper")
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) throws Exception {
-        InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
 
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(in);
+        SpringApplication.run(Application.class, args);
 
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);
-
-        List<User> userList = mapper.findAll();
-
-        userList.forEach(System.out::println);
     }
 
 }
