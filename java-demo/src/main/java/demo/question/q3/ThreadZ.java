@@ -2,6 +2,7 @@ package demo.question.q3;
 
 import lombok.AllArgsConstructor;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
@@ -14,16 +15,19 @@ import java.util.concurrent.locks.Lock;
 public class ThreadZ extends Thread {
 
     private Lock lock;
-    private Condition condition;
+    private Condition condition3;
+    private Condition condition1;
+    private CountDownLatch COUNT_DOWN_LATCH;
 
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
             lock.lock();
             try {
-                condition.await();
+                COUNT_DOWN_LATCH.countDown();
+                condition3.await();
                 System.out.println("Z");
-                condition.signal();
+                condition1.signal();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {

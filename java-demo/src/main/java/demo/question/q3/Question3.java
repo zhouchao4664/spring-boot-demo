@@ -1,6 +1,7 @@
 package demo.question.q3;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,21 +12,26 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Question3 {
     public static final ReentrantLock LOCK = new ReentrantLock(true);
-    public static final Condition CONDITION = LOCK.newCondition();
+    public static final Condition CONDITION1 = LOCK.newCondition();
+    public static final Condition CONDITION2 = LOCK.newCondition();
+    public static final Condition CONDITION3 = LOCK.newCondition();
 
-    public static void main(String[] args) {
-        ThreadX threadX = new ThreadX(LOCK, CONDITION);
-        ThreadY threadY = new ThreadY(LOCK, CONDITION);
-        ThreadZ threadZ = new ThreadZ(LOCK, CONDITION);
+    public static final CountDownLatch COUNT_DOWN_LATCH = new CountDownLatch(3);
 
-        CompletableFuture.runAsync(() -> threadX.start())
-                .thenRun(() -> threadY.start())
-                .thenRun(() -> threadZ.start());
+    public static void main(String[] args) throws InterruptedException {
+        ThreadX threadX = new ThreadX(LOCK, CONDITION1,CONDITION2,COUNT_DOWN_LATCH);
+        ThreadY threadY = new ThreadY(LOCK, CONDITION2,CONDITION3,COUNT_DOWN_LATCH);
+        ThreadZ threadZ = new ThreadZ(LOCK, CONDITION3,CONDITION1,COUNT_DOWN_LATCH);
 
-        System.out.println("线程开始运行");
+        threadY.start();
+        threadX.start();
+        threadZ.start();
+
+        COUNT_DOWN_LATCH.await();
+
         LOCK.lock();
         try {
-            CONDITION.signal();
+            CONDITION1.signal();
         } finally {
             LOCK.unlock();
         }

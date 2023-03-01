@@ -7,7 +7,7 @@ package demo.thread.volatileDemo.demo2;
  * @Description
  **/
 
-public class VolitileDemo2 {
+public class VolatileDemo2 {
 
     static int a;
     Person gg;
@@ -20,8 +20,8 @@ public class VolitileDemo2 {
 //        VolitileThread t1 = new VolitileThread(person);
 //        VolitileThread t2 = new VolitileThread(person);
 
-        VolitileThread t1 = new VolitileThread(x);
-        VolitileThread t2 = new VolitileThread(x);
+        VolatileThread t1 = new VolatileThread(x);
+        VolatileThread t2 = new VolatileThread(x);
         t1.start();
         t2.start();
         try {

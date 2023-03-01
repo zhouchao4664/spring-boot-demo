@@ -8,7 +8,7 @@ import org.apache.commons.lang3.RandomStringUtils;
  * @Date 2020/7/8 10:47
  * @Description
  **/
-public class VolitileThread extends Thread {
+public class VolatileThread extends Thread {
     private Person person;
     private int i;
 
@@ -16,7 +16,7 @@ public class VolitileThread extends Thread {
 //        this.person = person;
 //    }
 
-    public VolitileThread(int i) {
+    public VolatileThread(int i) {
         this.i = i;
     }
 
