@@ -43,6 +43,12 @@ public class TestUser implements Serializable {
     private Integer age;
 
     /**
+     * 手机号
+     */
+    @TableField("phone")
+    private String phone;
+
+    /**
      * 地址
      */
     @TableField("address")

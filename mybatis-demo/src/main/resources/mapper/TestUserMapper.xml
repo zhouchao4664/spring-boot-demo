@@ -7,6 +7,7 @@
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="age" property="age"/>
+        <result column="phone" property="phone"/>
         <result column="address" property="address"/>
         <result column="height" property="height"/>
         <result column="weight" property="weight"/>
@@ -14,7 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-            id, username, age, address, height, weight
+            id, username, age, phone, address, height, weight
         </sql>
 
 </mapper>
