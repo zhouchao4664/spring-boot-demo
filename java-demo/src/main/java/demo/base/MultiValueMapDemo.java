@@ -3,6 +3,7 @@ package demo.base;
 import org.springframework.util.LinkedMultiValueMap;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -14,10 +15,17 @@ public class MultiValueMapDemo {
         Map<String, Object> map = new LinkedMultiValueMap();
 
         map.put("key", Arrays.asList("oldString"));
-        map.put("key",Arrays.asList("newString"));
+        map.put("key", Arrays.asList("newString"));
         System.out.println(map.get("key"));
 
-        map.put("key",Arrays.asList("oldString","newString"));
+        map.put("key", Arrays.asList("oldString", "newString"));
         System.out.println(map.get("key"));
+
+        Map<String, Object> hashMap = new HashMap();
+        for (int i = 0; i < 10; i++) {
+            hashMap.put(i + "alfjklds", "123");
+        }
+
+        System.out.println(hashMap.get("5"));
     }
 }
