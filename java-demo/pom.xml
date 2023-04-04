@@ -85,5 +85,10 @@
             <groupId>com.janeluo</groupId>
             <artifactId>ikanalyzer</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.houbb</groupId>
+            <artifactId>junitperf</artifactId>
+        </dependency>
     </dependencies>
 </project>
