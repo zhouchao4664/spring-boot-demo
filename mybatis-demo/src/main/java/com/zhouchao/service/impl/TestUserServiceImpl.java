@@ -33,6 +33,6 @@ public class TestUserServiceImpl extends ServiceImpl<TestUserMapper, TestUser> i
     @Override
     @Transactional(rollbackFor = RuntimeException.class)
     public void updateUser(TestUser testUser) {
-        testUserMapper.insert(testUser);
+        testUserMapper.updateById(testUser);
     }
 }
