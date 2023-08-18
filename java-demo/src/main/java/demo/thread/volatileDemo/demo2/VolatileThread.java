@@ -1,8 +1,6 @@
 package demo.thread.volatileDemo.demo2;
 
 
-import org.apache.commons.lang3.RandomStringUtils;
-
 /**
  * @Author zhouchao
  * @Date 2020/7/8 10:47

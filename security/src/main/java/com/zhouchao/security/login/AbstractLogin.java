@@ -4,12 +4,9 @@ import com.zhouchao.security.core.ResultVo;
 import com.zhouchao.security.core.exception.ValidException;
 import com.zhouchao.security.domain.SysUser;
 import com.zhouchao.security.dto.AuthLogin;
-import com.zhouchao.security.jwt.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**

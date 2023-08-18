@@ -1,6 +1,7 @@
 package demo.base.utils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;

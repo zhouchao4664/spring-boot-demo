@@ -1,12 +1,9 @@
 package com.zhouchao.config;
 
 import org.flowable.engine.ProcessEngine;
-import org.flowable.idm.engine.impl.persistence.entity.data.GroupDataManager;
-import org.flowable.idm.engine.impl.persistence.entity.data.UserDataManager;
 import org.flowable.image.impl.DefaultProcessDiagramGenerator;
 import org.flowable.spring.SpringExpressionManager;
 import org.flowable.spring.SpringProcessEngineConfiguration;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

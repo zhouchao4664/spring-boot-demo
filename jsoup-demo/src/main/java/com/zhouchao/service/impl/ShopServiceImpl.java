@@ -3,12 +3,10 @@ package com.zhouchao.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhouchao.dao.ShopMapper;
-import com.zhouchao.domain.Score;
 import com.zhouchao.domain.Shop;
 import com.zhouchao.handler.shop58.Shop58Handler;
 import com.zhouchao.service.IShopService;
 import com.zhouchao.utils.Shop58Util;
-import com.zhouchao.utils.SimHashUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,8 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * <p>

@@ -1,6 +1,6 @@
 package demo.leetcode.easy;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * @Author zhouchao

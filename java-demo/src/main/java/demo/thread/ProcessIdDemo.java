@@ -3,8 +3,6 @@ package demo.thread;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.lang.management.ThreadMXBean;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.Date;
 
 /**

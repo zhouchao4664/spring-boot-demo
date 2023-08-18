@@ -5,7 +5,6 @@ import com.zhouchao.domain.TestUser;
 import com.zhouchao.mapper.TestUserMapper;
 import com.zhouchao.service.ITestUserService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;

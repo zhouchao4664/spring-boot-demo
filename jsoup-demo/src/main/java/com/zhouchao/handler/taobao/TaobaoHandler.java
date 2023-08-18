@@ -6,7 +6,6 @@ import com.zhouchao.handler.com.zhouchao.handler.PlatformHandler;
 import com.zhouchao.properties.KeywordConfigProperties;
 import com.zhouchao.utils.SimHashUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

@@ -1,7 +1,5 @@
 package demo.thread;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.*;
 
 /**
@@ -21,10 +19,10 @@ public class CompletableFutureDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(()->{
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
             System.out.println("处理任务");
             return "success";
-        },threadPoolExecutor);
+        }, threadPoolExecutor);
 
         String s = completableFuture.get();
         System.out.println(s);

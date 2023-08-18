@@ -10,19 +10,13 @@ package com.zhouchao.security.core.exception;
 
 
 import com.zhouchao.security.core.ResultVo;
-import com.zhouchao.security.utils.JacksonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * ClassName:全局异常处理 <br/>

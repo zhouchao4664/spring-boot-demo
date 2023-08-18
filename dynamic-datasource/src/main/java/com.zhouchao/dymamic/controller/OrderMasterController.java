@@ -2,9 +2,7 @@ package com.zhouchao.dymamic.controller;
 
 
 import com.zhouchao.dymamic.domain.OrderMaster;
-import com.zhouchao.dymamic.domain.UserInfo;
 import com.zhouchao.dymamic.service.OrderMasterServiceImpl;
-import com.zhouchao.dymamic.service.UserInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

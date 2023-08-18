@@ -2,9 +2,6 @@ package com.zhouchao.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zhouchao.domain.TestUser;
-import com.zhouchao.mapper.TestUserMapper;
-
-import javax.annotation.Resource;
 
 /**
  * <p>

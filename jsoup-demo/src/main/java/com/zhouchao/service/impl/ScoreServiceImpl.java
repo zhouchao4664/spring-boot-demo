@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zhouchao.dao.ScoreMapper;
 import com.zhouchao.domain.Score;
 import com.zhouchao.handler.com.zhouchao.handler.PlatformHandler;
-import com.zhouchao.handler.taobao.TaobaoHandler;
 import com.zhouchao.properties.KeywordConfigProperties;
 import com.zhouchao.service.IScoreService;
 import lombok.extern.slf4j.Slf4j;
