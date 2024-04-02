@@ -1,11 +1,15 @@
 package com.zhouchao.controller;
 
 
+import com.zhouchao.config.ConfigListTest;
 import com.zhouchao.domain.Person;
 import com.zhouchao.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * {@link RestController}
@@ -17,6 +21,9 @@ public class PersonRestController {
 
     @Autowired
     private PersonService personService;
+
+    @Autowired
+    private ConfigListTest configListTest;
 
     @GetMapping("/person/{id}")
     public Person person(@PathVariable Integer id, @RequestParam(required = false) String name){
@@ -42,5 +49,15 @@ public class PersonRestController {
         //@RequestBody 的内容是 Properties
         //响应的内容是 JSON
         return person;
+    }
+
+    @GetMapping("test")
+    public String test(){
+
+        for (String s : configListTest.getTest()) {
+            System.out.println(s);
+        }
+
+        return "success";
     }
 }
